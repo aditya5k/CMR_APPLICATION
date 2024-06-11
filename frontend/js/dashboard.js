@@ -66,7 +66,7 @@ window.addEventListener('load', async () => {
                 console.log("audienceList", audienceList);
     
                 for (const customer of audienceList) {
-                    const response  = await axios.post('https://cmr-application.onrender.comhttps://cmr-application.onrender.com/api/communication-log', {
+                    const response  = await axios.post('https://cmr-application.onrender.com/api/communication-log', {
                         customer: customer._id,
                         message: message
                     });
