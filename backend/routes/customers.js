@@ -15,26 +15,28 @@ router.post('/', async (req, res) => {
 });
 
 // Get customers with filters
-router.get('/', async (req, res) => {
-  const { spends, visits, noVisitMonths } = req.query;
+router.post('/getList', async (req, res) => {
+  const { spends, visits, noVisitMonths } = req.body;
   const query = {};
 
+  console.log(spends, visits, noVisitMonths)
   if (spends) {
-    query.totalSpends = { $gt: spends };
+    query.totalSpends = { $gte: spends };
   }
 
   if (visits) {
-    query.visits = { $eq: visits };
+    query.visits = { $gte: visits };
   }
 
   if (noVisitMonths) {
     const date = new Date();
     date.setMonth(date.getMonth() - noVisitMonths);
-    query.lastVisitDate = { $lt: date };
+    query.lastVisitDate = { $lte: date };
   }
 
   try {
     const customers = await Customer.find(query);
+    console.log("customers", customers);
     res.json(customers);
   } catch (err) {
     res.status(400).json({ error: err.message });
