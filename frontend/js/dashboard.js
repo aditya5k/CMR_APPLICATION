@@ -7,7 +7,7 @@ window.addEventListener('load', async () => {
         // Get URL parameters
 
         // Fetch audience list
-        const audienceResponse = await axios.post('http://localhost:5000/api/customers/getList', {
+        const audienceResponse = await axios.post('https://cmr-application.onrender.com/api/customers/getList', {
             spends,
             visits,
             noVisitMonths
@@ -16,7 +16,7 @@ window.addEventListener('load', async () => {
         displayAudienceList(audienceList);
 
         // Fetch campaigns list
-        const campaignsResponse = await axios.get('http://localhost:5000/api/campaigns');
+        const campaignsResponse = await axios.get('https://cmr-application.onrender.com/api/campaigns');
         const campaigns = campaignsResponse.data;
         displayCampaignsList(campaigns);
 
@@ -30,7 +30,7 @@ window.addEventListener('load', async () => {
         event.preventDefault();
         const message = document.getElementById('message').value;
         try {
-            const response = await axios.post('http://localhost:5000/api/campaigns/', { message });
+            const response = await axios.post('https://cmr-application.onrender.com/api/campaigns/', { message });
             displayCampaign(response.data);
             document.getElementById('message').value = '';
         } catch (error) {
@@ -56,7 +56,7 @@ window.addEventListener('load', async () => {
 
                 const message = selectedCampaign.dataset.message;
                 console.log(message)
-                const audienceResponse = await axios.post('http://localhost:5000/api/customers/getList', {
+                const audienceResponse = await axios.post('https://cmr-application.onrender.com/api/customers/getList', {
                     spends,
                     visits,
                     noVisitMonths
@@ -66,7 +66,7 @@ window.addEventListener('load', async () => {
                 console.log("audienceList", audienceList);
     
                 for (const customer of audienceList) {
-                    const response  = await axios.post('http://localhost:5000/api/communication-log', {
+                    const response  = await axios.post('https://cmr-application.onrender.comhttps://cmr-application.onrender.com/api/communication-log', {
                         customer: customer._id,
                         message: message
                     });

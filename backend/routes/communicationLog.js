@@ -10,7 +10,7 @@ router.post('/', async (req, res) => {
     try {
       const newLog = new CommunicationLog({ customer, message });
       const savedLog = await newLog.save();
-      const statusResponse = await axios.post('http://localhost:5000/api/communication-log/deleivery', { logId: savedLog._id });
+      const statusResponse = await axios.post('https://cmr-application.onrender.com/api/communication-log/deleivery', { logId: savedLog._id });
       savedLog.status = statusResponse.data.status;
       await savedLog.save();
   
