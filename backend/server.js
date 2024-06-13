@@ -1,5 +1,5 @@
 const app = require('./app');
-// const kafkaConsumer = require('./kafka/consumer');
+
 
 const port = 5000;
 

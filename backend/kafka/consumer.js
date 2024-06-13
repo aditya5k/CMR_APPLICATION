@@ -15,7 +15,7 @@ consumer.on('message', async (message) => {
     console.error('Error updating communication log:', err);
   }
 
-  // Simulate hitting a delivery receipt API
+  
   setTimeout(() => {
     const receipt = { id: log._id, status };
     producer.send([{ topic: 'delivery-receipt', messages: JSON.stringify(receipt) }], (err) => {

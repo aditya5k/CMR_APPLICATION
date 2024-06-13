@@ -4,9 +4,7 @@ window.addEventListener('load', async () => {
     const visits = urlParams.get('visits');
     const noVisitMonths = urlParams.get('noVisitMonths');
     try {
-        // Get URL parameters
 
-        // Fetch audience list
         const audienceResponse = await axios.post('https://cmr-application.onrender.com/api/customers/getList', {
             spends,
             visits,
@@ -15,17 +13,17 @@ window.addEventListener('load', async () => {
         const audienceList = audienceResponse.data;
         displayAudienceList(audienceList);
 
-        // Fetch campaigns list
+       
         const campaignsResponse = await axios.get('https://cmr-application.onrender.com/api/campaigns');
         const campaigns = campaignsResponse.data;
         displayCampaignsList(campaigns);
 
-                // Add event listener to campaign cards for selection
+                
     } catch (error) {
         console.error('Error fetching data:', error.message);
     }
 
-    // Add event listener to the campaign form submission
+    
     document.getElementById('campaign-form').addEventListener('submit', async (event) => {
         event.preventDefault();
         const message = document.getElementById('message').value;
@@ -45,7 +43,7 @@ window.addEventListener('load', async () => {
         });
     });
 
-        // Add event listener to the "Send Message" button
+        
         document.getElementById('send-message').addEventListener('click', async () => {
             try {
                 const selectedCampaign = document.querySelector('.card.selected');
